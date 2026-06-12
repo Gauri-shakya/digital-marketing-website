@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #06081a; /* outer background — dark navy */
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* ── Page Container ── */
+/* Saara page ek centered box mein — max 1440px, sides pe subtle border glow */
+#page-container {
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #020617;
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.08),
+    0 0 80px rgba(99, 102, 241, 0.06),
+    0 0 0 0 transparent;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/40 backdrop-blur-xl border border-slate-700/50 shadow-2xl;
+  }
+  
+  .glass-pill {
+    @apply bg-slate-900/60 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06081a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+  border: 2px solid #06081a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6366F1;
+}
+
+/* Custom animations */
+@keyframes wave {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-5px); }
+}
+.animate-wave {
+  animation: wave 1.2s infinite ease-in-out;
+}
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
