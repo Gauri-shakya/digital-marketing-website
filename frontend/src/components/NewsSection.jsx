@@ -9,7 +9,7 @@ export default function NewsSection() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/news`));
+        const res = await fetch((import.meta.env.VITE_API_URL || "") + '/api/news');
         if (!res.ok) throw new Error('Failed to fetch news');
         const data = await res.json();
         setNews(data);

@@ -28,7 +28,7 @@ export default function AdminDashboard() {
   const fetchLeads = async () => {
     setLoadingLeads(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/leads`));
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + '/api/leads');
       if (res.ok) {
         const data = await res.json();
         setLeads(data);

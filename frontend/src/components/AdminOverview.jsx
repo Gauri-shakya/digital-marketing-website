@@ -11,9 +11,9 @@ export default function AdminOverview({ setActiveTab }) {
       setLoading(true);
       try {
         const [leadsRes, servicesRes, testRes] = await Promise.all([
-          fetch(`${import.meta.env.VITE_API_URL || ""}/api/leads`)),
-          fetch(`${import.meta.env.VITE_API_URL || ""}/api/services`)),
-          fetch(`${import.meta.env.VITE_API_URL || ""}/api/testimonials`))
+          fetch((import.meta.env.VITE_API_URL || "") + '/api/leads'),
+          fetch((import.meta.env.VITE_API_URL || "") + '/api/services'),
+          fetch((import.meta.env.VITE_API_URL || "") + '/api/testimonials')
         ]);
         
         const leads = await leadsRes.json();

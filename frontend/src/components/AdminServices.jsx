@@ -12,7 +12,7 @@ export default function AdminServices() {
   const fetchServices = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/services`));
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + '/api/services');
       const data = await res.json();
       setServices(data);
     } catch (err) {
@@ -25,7 +25,7 @@ export default function AdminServices() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `/api/services/${formData.id}` : '/api/services';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL || ""}/api/services/${formData.id}` : (import.meta.env.VITE_API_URL || "") + '/api/services';
     
     try {
       await fetch(url, {
@@ -49,7 +49,7 @@ export default function AdminServices() {
   const handleDelete = async (id) => {
     if(!window.confirm('Are you sure you want to delete this service?')) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_URL || ""}/api/services/${id}`), { method: 'DELETE' });
+      await fetch(`${import.meta.env.VITE_API_URL || ""}/api/services/${id}`, { method: 'DELETE' });
       fetchServices();
     } catch (err) {
       console.error(err);

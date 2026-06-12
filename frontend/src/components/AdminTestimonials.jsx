@@ -12,7 +12,7 @@ export default function AdminTestimonials() {
   const fetchTestimonials = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/testimonials`));
+      const res = await fetch((import.meta.env.VITE_API_URL || "") + '/api/testimonials');
       const data = await res.json();
       setTestimonials(data);
     } catch (err) {
@@ -25,7 +25,7 @@ export default function AdminTestimonials() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const method = formData.id ? 'PUT' : 'POST';
-    const url = formData.id ? `/api/testimonials/${formData.id}` : '/api/testimonials';
+    const url = formData.id ? `${import.meta.env.VITE_API_URL || ""}/api/testimonials/${formData.id}` : (import.meta.env.VITE_API_URL || "") + '/api/testimonials';
     
     try {
       await fetch(url, {
@@ -49,7 +49,7 @@ export default function AdminTestimonials() {
   const handleDelete = async (id) => {
     if(!window.confirm('Are you sure you want to delete this testimonial?')) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_URL || ""}/api/testimonials/${id}`), { method: 'DELETE' });
+      await fetch(`${import.meta.env.VITE_API_URL || ""}/api/testimonials/${id}`, { method: 'DELETE' });
       fetchTestimonials();
     } catch (err) {
       console.error(err);
