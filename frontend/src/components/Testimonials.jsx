@@ -10,7 +10,7 @@ export default function Testimonials() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const res = await fetch('/api/testimonials');
+        const res = await fetch(`${import.meta.env.VITE_API_URL || ""}/api/testimonials`));
         if(res.ok) {
           const data = await res.json();
           setTestimonials(data);
